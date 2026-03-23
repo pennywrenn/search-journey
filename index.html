@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Journey — The Meaning Behind the Query</title>
+  <meta name="description" content="Search is not a tool. It is a journey. On keyword projection, natural language as authorship, and the human art of finding meaning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #faf6ed;
+      --paper-dark: #f2ece0;
+      --ink: #1a1209;
+      --ink-mid: #3d2e1a;
+      --ink-light: #6b5a44;
+      --gold: #c8a96e;
+      --gold-dark: #8b6914;
+      --rule: rgba(139,105,20,0.25);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Libre Baskerville', Georgia, serif;
+      line-height: 1.7;
+    }
+
+    .masthead {
+      background: var(--paper-dark);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.6rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .masthead-label {
+      font-family: 'Special Elite', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    header {
+      border-bottom: 4px double var(--ink);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .search-ornament {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: 0.5em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .pub-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .pub-name em {
+      font-style: italic;
+      font-weight: 400;
+      display: block;
+      font-size: 0.55em;
+      letter-spacing: 0;
+    }
+
+    .pub-tagline {
+      font-family: 'Special Elite', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.5rem 0;
+      margin: 0.75rem auto 0;
+      max-width: 560px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* OPENING THESIS */
+    .thesis {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .kicker {
+      font-family: 'Special Elite', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .thesis-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .thesis-text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--ink-mid);
+      margin-bottom: 1rem;
+    }
+
+    .thesis-text p.lead {
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+
+    .thesis-sidebar {
+      border-left: 1px solid var(--rule);
+      padding-left: 3rem;
+    }
+
+    .def-box {
+      background: var(--paper-dark);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--ink);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .def-box h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .def-box .def-label {
+      font-family: 'Special Elite', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .def-box p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--ink-mid);
+    }
+
+    /* TWO CONCEPTS */
+    .concepts {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .concepts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 2rem;
+      background: var(--rule);
+    }
+
+    .concept-card {
+      background: var(--paper);
+      padding: 2.5rem 2rem;
+    }
+
+    .concept-card:first-child {
+      border-right: 1px solid var(--rule);
+    }
+
+    .concept-label {
+      font-family: 'Special Elite', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .concept-card h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .concept-card p {
+      font-size: 0.95rem;
+      line-height: 1.78;
+      color: var(--ink-mid);
+    }
+
+    .vs-divider {
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--gold);
+      background: var(--paper-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* AUTHORSHIP */
+    .authorship {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .authorship-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .authorship-number {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 8rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0.3;
+    }
+
+    .authorship-content h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+
+    .authorship-content p {
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: var(--ink-mid);
+      margin-bottom: 1rem;
+    }
+
+    .pullquote-center {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.3;
+      text-align: center;
+      border-top: 2px solid var(--ink);
+      border-bottom: 1px solid var(--rule);
+      padding: 2rem 0;
+      margin: 2rem 0;
+      color: var(--ink);
+    }
+
+    /* CONNECTIONS */
+    .connections {
+      background: var(--paper-dark);
+      padding: 3.5rem 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .connections-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .connections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .connection-card {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--gold);
+      padding: 1.5rem;
+    }
+
+    .connection-card h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .connection-card p {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--ink-mid);
+    }
+
+    .connection-card a {
+      color: var(--gold-dark);
+      text-decoration: none;
+      font-family: 'Special Elite', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--paper-dark);
+      border-top: 4px double var(--ink);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .footer-pub {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-copy {
+      font-family: 'Special Elite', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--ink-light);
+      line-height: 2;
+    }
+
+    @media (max-width: 768px) {
+      .thesis { grid-template-columns: 1fr; gap: 2rem; }
+      .thesis-sidebar { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 2rem; }
+      .concepts-grid { grid-template-columns: 1fr; }
+      .vs-divider { padding: 1.5rem; }
+      .authorship-inner { grid-template-columns: 1fr; }
+      .authorship-number { font-size: 5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="masthead">
+    <span class="masthead-label">Search · Discovery · Meaning</span>
+    <span class="masthead-label" style="text-align:right;">pennywrenn.blog</span>
+  </div>
+
+  <header>
+    <span class="search-ornament">· · · ⌕ · · ·</span>
+    <h1 class="pub-name">
+      Search<br>
+      <em>Journey</em>
+    </h1>
+    <p class="pub-tagline">The art and architecture of how humans find meaning · Not just information</p>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="thesis">
+        <div class="thesis-text">
+          <div class="kicker">The Thesis</div>
+          <h2 class="thesis-headline">Every Search Is a Question About<br>What It Means to Be Human</h2>
+          <p class="lead">Search is not a retrieval mechanism. It is a declaration of intent — a small, quiet act of authorship performed millions of times per second by people trying to understand the world, find connection, or make something better.</p>
+          <p>When someone types a query into a search box, they are doing something that no algorithm fully understands: they are expressing a need that exists at the intersection of language, desire, and context. The words are not the thing. They are the trail left by the thing.</p>
+          <p>Search Journey is about that trail. About what it means to follow it. About what we find — and don't find — when we go looking. It draws on Penny Wrenn's decade of work in SEM and content marketing, but it is not a trade publication. It is a humanist inquiry into the most widely used cognitive tool in human history.</p>
+        </div>
+        <div class="thesis-sidebar">
+          <div class="def-box">
+            <span class="def-label">Concept</span>
+            <h4>Keyword Projection</h4>
+            <p>Creating demand that does not yet exist. Writing toward a future search — publishing for the person who hasn't yet known they need the idea, but will.</p>
+          </div>
+          <div class="def-box">
+            <span class="def-label">Concept</span>
+            <h4>Keyword Extraction</h4>
+            <p>Chasing the trend that already exists. Optimizing for what people are already searching for. Useful. Efficient. Not the same thing as authorship.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="concepts">
+        <div class="kicker">The Central Distinction</div>
+        <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;line-height:1.2;">
+          Two Ways to Think About Search.<br>Only One Is Actually About People.
+        </h2>
+        <div class="concepts-grid">
+          <div class="concept-card">
+            <div class="concept-label">The Conventional Approach</div>
+            <h3>Keyword Extraction</h3>
+            <p>Find what people are already searching for. Measure volume. Optimize content to intercept that traffic. Win the ranking. This approach treats search as a mirror — reflecting existing demand back at scale.</p>
+            <p style="margin-top:1rem;">It works. For some purposes, it works very well. But it is fundamentally reactive. It is the industry chasing the human, not the other way around.</p>
+          </div>
+          <div class="vs-divider">vs.</div>
+          <div class="concept-card">
+            <div class="concept-label">The Author's Approach</div>
+            <h3>Keyword Projection</h3>
+            <p>Write toward what people <em>will</em> need. Create the language before the demand exists. Publish for the searcher who hasn't yet formed the question — but whose need is already latent, waiting for articulation.</p>
+            <p style="margin-top:1rem;">This is harder. It requires understanding human need at a level below the query. It is also — when it works — how ideas change culture.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="authorship">
+        <div class="kicker">Natural Language as Authorship</div>
+        <div class="authorship-inner">
+          <div class="authorship-number">NL</div>
+          <div class="authorship-content">
+            <h2>The Way You Write a Search Query Is the Way You Think. That's Not Nothing.</h2>
+            <p>Natural language processing treats human language as input to be parsed. Search Journey treats it as output to be respected — as evidence of cognition, desire, and the specific texture of an individual mind working through a problem.</p>
+            <p>When Penny Wrenn writes content, she writes toward the searcher's intent — not just the keyword, not just the topic, but the underlying question that produced the query. This is Computational Authorship: using the tools of digital publishing with the rigor of editorial craft and the empathy of genuine human listening.</p>
+            <p>The search box is not a slot machine. It is a confessional booth, a library card, and a compass — all at once. The people who build content systems should know that.</p>
+          </div>
+        </div>
+
+        <p class="pullquote-center" style="max-width:700px;margin:2rem auto;">
+          "Natural language is not input. It is testimony. Treat it accordingly."
+        </p>
+      </div>
+
+    </div>
+
+    <div class="connections">
+      <div class="connections-inner">
+        <div class="kicker">Part of a Larger Framework</div>
+        <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;line-height:1.2;margin-bottom:0.5rem;">
+          Search Journey connects to the broader work.
+        </h2>
+        <div class="connections-grid">
+          <div class="connection-card">
+            <h4>101 Free Ideas</h4>
+            <p>Keyword projection in its purest form — ideas published into the commons before anyone searched for them. The act of creating demand through the simple audacity of making something public.</p>
+            <a href="https://pennywrenn.blog">pennywrenn.blog →</a>
+          </div>
+          <div class="connection-card">
+            <h4>America 250</h4>
+            <p>The civic search — what does a republic look for when it turns 250? What questions does it need to ask that it has been avoiding? Search as civic inquiry, not just commercial transaction.</p>
+            <a href="https://power2026.com">power2026.com →</a>
+          </div>
+          <div class="connection-card">
+            <h4>The Consulting Practice</h4>
+            <p>Keyword projection, content strategy, and SEM applied to causes and organizations that need to be found by the people who need them most. Search as service.</p>
+            <a href="https://pennywrenn.consulting">pennywrenn.consulting →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-pub">Search Journey</div>
+    <div class="footer-copy">
+      © Penny Wrenn · All Rights Reserved · Free to read · Not free to extract<br>
+      pennywrenn.blog · Part of the America 250 editorial framework
+    </div>
+  </footer>
+
+</body>
+</html>
